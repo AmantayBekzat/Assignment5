@@ -1,0 +1,17 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {addExpense,summarize,removeExpense,amountToCents,formatMoney} from '../src/domain.mjs';
+const input={title:'Lunch',amount:'12.50',date:'2026-11-22',category:'Food'};
+test('add amount in cents',()=>assert.equal(addExpense([],input)[0].cents,1250));
+test('original entries are immutable',()=>{const a=[];addExpense(a,input);assert.deepEqual(a,[])});
+test('reject zero',()=>assert.throws(()=>addExpense([],{...input,amount:'0'})));
+test('reject negative',()=>assert.throws(()=>addExpense([],{...input,amount:'-1'})));
+test('reject non numeric',()=>assert.throws(()=>addExpense([],{...input,amount:'abc'})));
+test('reject empty title',()=>assert.throws(()=>addExpense([],{...input,title:' '})));
+test('reject unknown category',()=>assert.throws(()=>addExpense([],{...input,category:'Unknown'})));
+test('reject empty date',()=>assert.throws(()=>addExpense([],{...input,date:''})));
+test('monthly sum excludes another month',()=>{let a=addExpense([],input);a=addExpense(a,{...input,date:'2026-10-01'});assert.equal(summarize(a,'2026-11',2500).spent,1250)});
+test('remaining may be negative',()=>assert.equal(summarize(addExpense([],input),'2026-11',1000).remaining,-250));
+test('category total',()=>assert.equal(summarize(addExpense([],input),'2026-11',2000).categories.Food,1250));
+test('remove preserves input',()=>{const a=addExpense([],input);assert.equal(removeExpense(a,1).length,0);assert.equal(a.length,1)});
+test('currency formatting',()=>assert.equal(formatMoney(1250),'$12.50'));
+test('decimal amount',()=>assert.equal(amountToCents('0.01'),1));

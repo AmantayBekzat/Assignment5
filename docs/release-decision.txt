@@ -1,0 +1,6 @@
+CONDITIONAL for local educational demonstration of the final source export.
+Evidence: baseline14/14; six new money cases fail before repair; final31/31; clean offline install, syntax checks and build pass; browser12/12. Two priority risks mitigated with preserved reproductions. Readiness Level2.
+Controls: fictional session data only; browser date input, no imports/API; no server, public deployment or financial reliance. Student maintainer owns independent review of all seven classifications, two diffs and three manual cases before submission.
+Remaining risks: R3 impossible domain dates (score4), R2 broader security residual3, R1 input-policy residual2, R4 behavioral instruction limits2, R5 refresh loss2. No persistence is promised. Runtime security/CI and cross-version testing remain open.
+Before wider use: fix calendar validation, define persistence/security requirements, add CI and complete human approval. Critical check failure or loss of these controls means NO-GO until repaired. GO requires closed release gates and acceptable residuals.
+Provenance: working classroom baseline created for this assignment, then exported before audit; it was not a pre-existing student repository. Instructor acceptance of this newly created baseline is not evidenced.

@@ -1,0 +1,10 @@
+22 November 2026. Read-only AI risk review before corrective edits.
+Prompt summary: inspect the expense tracker source, README, package and tests. Propose risks spanning correctness, security and agent operations. Do not modify code; classify only after reproducing. No independent second agent was launched.
+Context: newly created classroom baseline, all src modules, build script, HTML/CSS and 14 tests.
+R1 correctness candidate: domain.amountToCents uses parseFloat, which may accept trailing garbage, exponent notation and overprecision. Reproduce 12abc, 1e2, 0.009. UI amount is text, so this boundary is directly reachable.
+R2 security candidate: app render interpolates title into info.innerHTML. Reproduce a local img/onerror marker; no external request. Expected risk is script execution in page, not server compromise.
+R3 correctness candidate: date guard checks shape only. Try 2026-02-30 through domain API. Browser date input may prevent this but direct callers do not.
+R4 agent operations candidate: baseline has no AGENTS.md and README omits boundaries/review gates. Inspect preserved files. This is missing guidance, not proof a destructive action happened.
+R5 data durability candidate: entries exist only in module memory; refresh resets data. README and footer disclose this. Confirm browser reload, classify as design limitation.
+R6 security candidate: hypothesis app uploads personal expenses to a server. Inspect source and record browser HTTP requests; lack of backend/external dependencies should refute it for this version.
+R7 dependency candidate: hypothesis a missing lockfile permits dependency drift. Verify package-lock.json and npm ci. No third-party package exists; do not invent advisory results.

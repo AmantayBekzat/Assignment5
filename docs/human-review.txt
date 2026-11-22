@@ -1,0 +1,5 @@
+Open Pocket_Ledger.html in a browser.
+1. Initial monthly total $70.25, remaining $179.75.
+2. Add Coffee /4.50/Other/2026-11-22: total $74.75, remaining $175.25.
+3. Try amount12abc: visible validation message; total stays $74.75.
+Then inspect risk-register.csv (all seven classifications), evidence/final.patch, both mitigations and release decision. Record agreements/challenges and final acceptance. Student confirmed all three calculation/input cases and requested a red alert; final UI incorporates that feedback. Full finding/diff approval remains pending.

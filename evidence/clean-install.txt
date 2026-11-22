@@ -1,0 +1,7 @@
+$ npm ci --ignore-scripts --offline
+
+up to date, audited 1 package in 260ms
+
+found 0 vulnerabilities
+
+EXIT CODE: 0

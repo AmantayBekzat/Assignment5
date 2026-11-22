@@ -1,0 +1,15 @@
+CONFIRMED R1 baseline accepted 12abc as $12.00; monthly spent $82.25 instead of retaining $70.25
+CONFIRMED R2 baseline title executed local onerror marker
+PASS initial monthly totals
+PASS valid expense updates totals
+PASS R1 malformed amount rejected without state change
+PASS R2 title is literal text and cannot create img nodes
+PASS remove expense updates totals
+PASS over-budget amount remains negative
+PASS invalid budget is rejected
+PASS month filter empty state
+PASS reload confirms disclosed session-only reset
+PASS mobile layout has no horizontal overflow
+PASS no external HTTP requests
+PASS no browser errors
+Final browser checks: 12/12 passed

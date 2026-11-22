@@ -1,0 +1,9 @@
+I used an OpenAI coding assistant to create and audit Pocket Ledger, a small expense tracker with fictional data. The assistant received Assignment 5, the working baseline, its tests, the repository map and my report-format preferences. The baseline was created for this assignment and preserved before audit changes; it was not an older project supplied by me.
+
+A useful suggestion was to treat money entry as a boundary between UI text and integer-cent calculations. The original parser accepted 12abc as 12 dollars. Six targeted cases failed before the Money Input Adapter was introduced. After strict parsing, all 31 unit tests passed. A separate browser reproduction confirmed that a description could create HTML and execute a local event handler. Replacing that interpolation with textContent preserved the description as literal text.
+
+An inaccurate suggestion was that the app uploaded expenses to a server. Source inspection found no network path, and browser checks recorded no HTTP requests. The missing-lockfile claim was also rejected after inspecting the export and completing an offline clean install.
+
+The assistant checked the code, ran tests and captured browser evidence. I personally checked the initial total, added a 4.50 expense and tried 12abc. The totals matched, but I found the validation message too faint. I requested a red alert; the assistant implemented it and repeated browser checks. I still need to approve the full risk register and diff before submission.
+
+AGENTS.md improved the process by defining safe commands, edit scope and prohibited actions. The release remains CONDITIONAL: the classroom demo works, but the domain date validator still accepts impossible dates and entries reset on refresh. Calendar validation and automated CI are the next improvements.

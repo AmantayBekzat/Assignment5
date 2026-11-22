@@ -1,0 +1,8 @@
+Exactly ONE focused pattern: Money Input Adapter.
+Problem: UI amounts arrive as strings, while summaries require integer cents. The baseline amountToCents mixed permissive parseFloat semantics into domain input. Copying validation into expense and budget form handlers would create drift.
+Decision: src/moneyInputAdapter.mjs exports decimalToCents(text). Domain amountToCents delegates; existing callers remain unchanged. Adapter accepts canonical unsigned decimal text with up to two decimal digits; whole dollars/fraction become cents without floating decimal multiplication. Invalid or excessive values return NaN; existing domain/form guards reject them.
+Before: app -> domain(amountToCents/parseFloat) -> expense totals.
+After: app -> domain -> Money Input Adapter -> integer cents -> totals.
+This is a functional Adapter, not a class hierarchy. No Strategy, factory or extra pattern was added. R2 uses a direct DOM API correction and is not a second refactoring.
+Alternative: inline strict parsing in domain is viable for a tiny app; a small boundary module is justified here because both budget and expense inputs share the same policy and the policy has dedicated contract tests. No dependency required.
+Evidence: 14 original tests byte-identical; final 31/31; 12/12 browser checks. Limits: USD only, no localized commas/grouping, negative amounts/whitespace/exponents rejected deliberately.

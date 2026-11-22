@@ -1,0 +1,12 @@
+{
+  "index.html": "e82a463a2eba350dd8017573d09730fc25e1bf8fc8a94abf2780e057d302ec54",
+  "README.md": "81596acfb9a7df4acc18e1594cfe4678d81a8de175f3cd04158fd80d70c56bed",
+  "package-lock.json": "d5e4039fbfff2ed81cb354ac2e64bc448aca5dfd5bb1e747a3f88f07417b8eca",
+  "package.json": "1cc295c9c3b67f2ba0bc23c35d54d19442118aedace35c128aed94dc6d0cd42c",
+  "build.mjs": "552c7e4bca5226212e2e80503ff9b7320ccd3b2bd0de07508188b95c523fe728",
+  "style.css": "7269f3c287eb23e36a74e1db91d40de4fbf3ea92a10e2159a3cbee2ab5d6d289",
+  "test/domain.test.mjs": "4a1561b7828fd347f543a1eaa22ab180e53d1ecb65afda55669b3c7b61743d30",
+  "dist/Pocket_Ledger.html": "5a2408a691407570b57e7fb726b50efeea87f0a453eba5e74d2918501c24ff48",
+  "src/domain.mjs": "97233e0bc988ce08bae0820212b2205215c7f042d42664edc4ac559f37ce48a3",
+  "src/app.mjs": "f0e8a8973e70563dffc61f84ed6857c9f15ef24f4c34a0af2ec5686d332ce4cb"
+}

@@ -1,0 +1,151 @@
+
+> pocket-ledger-assignment5@1.0.0 test
+> node --test test/*.test.mjs
+
+✔ add amount in cents (0.768291ms)
+✔ original entries are immutable (0.855084ms)
+✔ reject zero (0.11725ms)
+✔ reject negative (0.054083ms)
+✔ reject non numeric (0.055708ms)
+✔ reject empty title (0.050334ms)
+✔ reject unknown category (0.046125ms)
+✔ reject empty date (0.051708ms)
+✔ monthly sum excludes another month (0.119916ms)
+✔ remaining may be negative (0.087542ms)
+✔ category total (0.055041ms)
+✔ remove preserves input (0.052709ms)
+✔ currency formatting (23.720458ms)
+✔ decimal amount (0.052208ms)
+✖ R1 rejects noncanonical amount "12abc" (1.067666ms)
+✖ R1 rejects noncanonical amount "1e2" (0.077166ms)
+✖ R1 rejects noncanonical amount "0.009" (0.042708ms)
+✖ R1 rejects noncanonical amount "1.234" (0.043041ms)
+✔ R1 rejects noncanonical amount "0x10" (0.074708ms)
+✔ R1 rejects noncanonical amount "Infinity" (0.037875ms)
+✔ R1 rejects noncanonical amount "NaN" (0.037875ms)
+✔ R1 rejects noncanonical amount "" (0.032166ms)
+✖ R1 rejects noncanonical amount " 12.50 " (0.062625ms)
+✖ R1 rejects noncanonical amount "+12.50" (0.086208ms)
+✔ Money adapter exact cents 12 (0.402625ms)
+✔ Money adapter exact cents 12.5 (0.042417ms)
+✔ Money adapter exact cents 12.50 (0.051333ms)
+✔ Money adapter exact cents 0.01 (0.025042ms)
+✔ Money adapter exact cents 1000000.00 (0.023167ms)
+✔ R1 rejects over maximum (0.052833ms)
+✔ R3 calendar guard currently accepts impossible date (documented residual) (0.048709ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 25
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 105.329042
+
+✖ failing tests:
+
+test at test/risk.test.mjs:5:2
+✖ R1 rejects noncanonical amount "12abc" (1.067666ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/bekzatamantay/Documents/ChatGPT/Software/assignment5-expense-tracker/final/test/risk.test.mjs:5:75)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at test/risk.test.mjs:5:2
+✖ R1 rejects noncanonical amount "1e2" (0.077166ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/bekzatamantay/Documents/ChatGPT/Software/assignment5-expense-tracker/final/test/risk.test.mjs:5:75)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at test/risk.test.mjs:5:2
+✖ R1 rejects noncanonical amount "0.009" (0.042708ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/bekzatamantay/Documents/ChatGPT/Software/assignment5-expense-tracker/final/test/risk.test.mjs:5:75)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at test/risk.test.mjs:5:2
+✖ R1 rejects noncanonical amount "1.234" (0.043041ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/bekzatamantay/Documents/ChatGPT/Software/assignment5-expense-tracker/final/test/risk.test.mjs:5:75)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at test/risk.test.mjs:5:2
+✖ R1 rejects noncanonical amount " 12.50 " (0.062625ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/bekzatamantay/Documents/ChatGPT/Software/assignment5-expense-tracker/final/test/risk.test.mjs:5:75)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at test/risk.test.mjs:5:2
+✖ R1 rejects noncanonical amount "+12.50" (0.086208ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///Users/bekzatamantay/Documents/ChatGPT/Software/assignment5-expense-tracker/final/test/risk.test.mjs:5:75)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }

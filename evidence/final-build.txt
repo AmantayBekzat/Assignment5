@@ -1,0 +1,8 @@
+$ npm run build
+
+> pocket-ledger-assignment5@1.0.0 build
+> node build.mjs
+
+Built dist/Pocket_Ledger.html (no external dependencies).
+
+EXIT CODE: 0

@@ -1,0 +1,7 @@
+$ npm run check
+
+> pocket-ledger-assignment5@1.0.0 check
+> node --check src/domain.mjs && node --check src/app.mjs && node --check build.mjs
+
+
+EXIT CODE: 0

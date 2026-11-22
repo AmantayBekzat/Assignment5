@@ -1,0 +1,3 @@
+Pocket Ledger: newly created classroom project, preserved as a working baseline before audit. No external/older repository was supplied. Source export, not commit history, is the baseline checkpoint.
+Entry: index.html -> src/app.mjs. UI: HTML/CSS + native DOM. Domain: src/domain.mjs owns add/remove/summary/formatMoney. Pattern: src/moneyInputAdapter.mjs converts decimal text to integer cents. Tests: test/domain.test.mjs (14 original), test/risk.test.mjs (17 added). Build: build.mjs inlines CSS and ES modules to dist/Pocket_Ledger.html. package.json/lock: no dependencies; Node >=20.
+Verified runtime: Node v25.9.0, npm 11.12.1. Other supported Node versions were not tested. Browser: desktop Chrome, 1280x1120 and 390x844 viewports.

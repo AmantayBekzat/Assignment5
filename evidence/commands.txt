@@ -1,0 +1,5 @@
+Baseline directory: npm install --package-lock-only --ignore-scripts --offline (exit0); npm test (exit0,14 tests); npm run check (exit0); npm run build (exit0).
+Final with new tests before corrective patch: npm test (exit1,25 pass/6fail).
+Final after patch: npm ci --ignore-scripts --offline; npm test; npm run check; npm run build (all exit0). Adapter syntax: node --check src/moneyInputAdapter.mjs (exit0).
+Workspace: node assignment5-expense-tracker/evidence/browser-checks.cjs (exit0,12/12; baseline R1/R2 reproduced).
+No lint/type/CI or remote advisory scan executed.

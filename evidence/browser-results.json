@@ -1,0 +1,22 @@
+{
+  "baseline": [
+    "R1 confirmed",
+    "R2 confirmed"
+  ],
+  "passed": [
+    "initial monthly totals",
+    "valid expense updates totals",
+    "R1 malformed amount rejected without state change",
+    "R2 title is literal text and cannot create img nodes",
+    "remove expense updates totals",
+    "over-budget amount remains negative",
+    "invalid budget is rejected",
+    "month filter empty state",
+    "reload confirms disclosed session-only reset",
+    "mobile layout has no horizontal overflow",
+    "no external HTTP requests",
+    "no browser errors"
+  ],
+  "httpRequests": [],
+  "errors": []
+}

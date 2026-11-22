@@ -1,0 +1,9 @@
+Hypothetical task only; no background agent or paid access used.
+Task: propose strict calendar-date validation and targeted tests for open R3.
+Isolation: human creates branch audit/calendar-validation in separate ../pocket-ledger-calendar worktree from reviewed final snapshot; preserved baseline remains read-only.
+Allowed files: src/domain.mjs, test/calendar.test.mjs, docs/calendar-result.txt. Prohibited files: package/lock, build script, UI, baseline and prior evidence.
+Commands: read allowlisted files; node --test test/calendar.test.mjs; npm test; npm run check; npm run build; git diff. Already reviewed environment only; no network/install.
+Limits: 15 minutes; at most two repair attempts after failing checks; stop on unexpected scope or missing environment. No secrets, real data, deployments, push/merge, destructive commands, history rewriting, dependency changes or external messages.
+Required artifacts: change summary, complete diff, exact test output/exit codes, build result, unexecuted checks and residual risk notes.
+Human gate: independently inspect leap-year/month-end cases and all touched files, rerun checks, approve before any merge/deployment. Agent cannot self-approve.
+Failure: keep logs and isolated branch unmerged. Main stays unchanged. Rollback is human abandonment of isolated proposal or restoration from preserved export; no automated destructive cleanup.

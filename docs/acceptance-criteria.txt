@@ -1,0 +1,5 @@
+AC1: valid decimal expenses 0.01..1,000,000.00 become exact integer cents; title/category/date are preserved.
+AC2: monthly spent, remaining and category totals are correct; over-budget remaining is negative.
+AC3: adding/removing creates new arrays without mutating inputs; excluded months do not affect totals.
+AC4: titles display as literal text; rejected values leave entries unchanged and produce feedback.
+AC5: standalone export runs with no API, credentials or external dependency; session-only reset is disclosed.

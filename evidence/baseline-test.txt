@@ -1,0 +1,26 @@
+
+> pocket-ledger-assignment5@1.0.0 test
+> node --test test/*.test.mjs
+
+✔ add amount in cents (0.609417ms)
+✔ original entries are immutable (1.189667ms)
+✔ reject zero (0.095792ms)
+✔ reject negative (0.046417ms)
+✔ reject non numeric (0.064ms)
+✔ reject empty title (0.044958ms)
+✔ reject unknown category (0.041875ms)
+✔ reject empty date (0.045333ms)
+✔ monthly sum excludes another month (0.350167ms)
+✔ remaining may be negative (0.078709ms)
+✔ category total (0.046375ms)
+✔ remove preserves input (0.04375ms)
+✔ currency formatting (23.430166ms)
+✔ decimal amount (0.046541ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 66.465583

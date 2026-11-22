@@ -1,0 +1,46 @@
+$ npm test
+
+> pocket-ledger-assignment5@1.0.0 test
+> node --test test/*.test.mjs
+
+✔ add amount in cents (0.770875ms)
+✔ original entries are immutable (0.739417ms)
+✔ reject zero (0.102583ms)
+✔ reject negative (0.049208ms)
+✔ reject non numeric (0.052334ms)
+✔ reject empty title (0.046334ms)
+✔ reject unknown category (0.049292ms)
+✔ reject empty date (0.049417ms)
+✔ monthly sum excludes another month (0.11625ms)
+✔ remaining may be negative (0.288916ms)
+✔ category total (0.066416ms)
+✔ remove preserves input (0.05925ms)
+✔ currency formatting (26.506083ms)
+✔ decimal amount (0.063958ms)
+✔ R1 rejects noncanonical amount "12abc" (0.807792ms)
+✔ R1 rejects noncanonical amount "1e2" (0.070042ms)
+✔ R1 rejects noncanonical amount "0.009" (0.038666ms)
+✔ R1 rejects noncanonical amount "1.234" (0.036792ms)
+✔ R1 rejects noncanonical amount "0x10" (0.041209ms)
+✔ R1 rejects noncanonical amount "Infinity" (0.035709ms)
+✔ R1 rejects noncanonical amount "NaN" (0.039ms)
+✔ R1 rejects noncanonical amount "" (0.037125ms)
+✔ R1 rejects noncanonical amount " 12.50 " (0.048125ms)
+✔ R1 rejects noncanonical amount "+12.50" (0.075958ms)
+✔ Money adapter exact cents 12 (0.064166ms)
+✔ Money adapter exact cents 12.5 (0.450958ms)
+✔ Money adapter exact cents 12.50 (0.042166ms)
+✔ Money adapter exact cents 0.01 (0.028875ms)
+✔ Money adapter exact cents 1000000.00 (0.026625ms)
+✔ R1 rejects over maximum (0.051041ms)
+✔ R3 calendar guard currently accepts impossible date (documented residual) (0.075917ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 107.302708
+
+EXIT CODE: 0

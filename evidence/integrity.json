@@ -1,0 +1,10 @@
+{
+  "baseline_preserved": true,
+  "unchanged_original_files": [
+    "test/domain.test.mjs",
+    "package.json",
+    "package-lock.json",
+    "index.html",
+    "build.mjs"
+  ]
+}

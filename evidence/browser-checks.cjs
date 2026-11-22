@@ -1,0 +1,31 @@
+const {chromium}=require('/Users/bekzatamantay/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const assert=require('node:assert/strict');const path=require('node:path');const fs=require('node:fs');
+(async()=>{
+ const browser=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
+ const page=await browser.newPage({viewport:{width:1280,height:1120}});const root=path.resolve(__dirname,'..');const results=[];let http=[];let errors=[];
+ page.on('request',r=>{if(/^https?:/.test(r.url()))http.push(r.url())});page.on('pageerror',e=>errors.push(e.message));
+ const load=async(version='final')=>page.goto('file://'+path.join(root,version,'dist/Pocket_Ledger.html'));
+ const add=async(title,amount)=>{await page.locator('#title').fill(title);await page.locator('#amount').fill(amount);await page.getByRole('button',{name:'Add expense'}).click()};
+ const shot=async name=>page.screenshot({path:path.join(__dirname,name+'.png'),fullPage:true});
+ await load('baseline');await shot('baseline');
+ await add('Malformed amount','12abc');assert.equal(await page.locator('#spent').innerText(),'$82.25');
+ console.log('CONFIRMED R1 baseline accepted 12abc as $12.00; monthly spent $82.25 instead of retaining $70.25');
+ await load('baseline');await add('<img src=x onerror="window.__auditMarker=1">','1.00');await page.waitForFunction(()=>window.__auditMarker===1);
+ console.log('CONFIRMED R2 baseline title executed local onerror marker');
+ await shot('baseline-xss');
+ async function test(name,fn){await fn();results.push(name);console.log('PASS '+name)}
+ await load();
+ await test('initial monthly totals',async()=>{assert.equal(await page.locator('#spent').innerText(),'$70.25');assert.equal(await page.locator('#remaining').innerText(),'$179.75')});await shot('desktop');
+ await test('valid expense updates totals',async()=>{await add('Coffee with friends','4.50');assert.equal(await page.locator('#spent').innerText(),'$74.75');assert.equal(await page.locator('#remaining').innerText(),'$175.25')});await shot('desktop-added');
+ await test('R1 malformed amount rejected without state change',async()=>{await add('Invalid amount','12abc');assert.equal(await page.locator('#spent').innerText(),'$74.75');assert.match(await page.getByRole('alert').innerText(),/Enter an amount/);assert.equal(await page.locator('#message').evaluate(el=>getComputedStyle(el).color),'rgb(156, 36, 36)')});await shot('desktop-validation');
+ await test('R2 title is literal text and cannot create img nodes',async()=>{await add('<img src=x onerror="window.__auditMarker=1">','1.00');assert.equal(await page.locator('#list img').count(),0);assert.equal(await page.evaluate(()=>window.__auditMarker),undefined);assert.match(await page.locator('#list').innerText(),/<img src=x/)});await shot('desktop-safe-title');
+ await test('remove expense updates totals',async()=>{await page.getByRole('button',{name:'Remove Coffee with friends',exact:true}).click();assert.equal(await page.locator('#spent').innerText(),'$71.25')});
+ await test('over-budget amount remains negative',async()=>{await page.locator('#budget').fill('50.00');await page.getByRole('button',{name:'Update budget'}).click();assert.equal(await page.locator('#remaining').innerText(),'-$21.25')});
+ await test('invalid budget is rejected',async()=>{await page.locator('#budget').fill('50oops');await page.getByRole('button',{name:'Update budget'}).click();assert.equal(await page.locator('#budget-value').innerText(),'$50.00')});
+ await test('month filter empty state',async()=>{await page.locator('#month').fill('2026-10');await page.locator('#month').dispatchEvent('change');assert.equal(await page.locator('#spent').innerText(),'$0.00');assert.equal(await page.locator('#empty').isVisible(),true)});
+ await test('reload confirms disclosed session-only reset',async()=>{await load();assert.equal(await page.locator('#spent').innerText(),'$70.25');assert.equal(await page.locator('#count').innerText(),'3 expenses')});
+ await test('mobile layout has no horizontal overflow',async()=>{await page.setViewportSize({width:390,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true)});await shot('mobile');await page.locator('#expense-form').scrollIntoViewIfNeeded();await page.screenshot({path:path.join(__dirname,'mobile-viewport.png')});
+ await test('no external HTTP requests',async()=>assert.deepEqual(http,[]));
+ await test('no browser errors',async()=>assert.deepEqual(errors,[]));
+ console.log(`Final browser checks: ${results.length}/${results.length} passed`);fs.writeFileSync(path.join(__dirname,'browser-results.json'),JSON.stringify({baseline:['R1 confirmed','R2 confirmed'],passed:results,httpRequests:http,errors},null,2));await browser.close();
+})().catch(e=>{console.error(e);process.exit(1)});

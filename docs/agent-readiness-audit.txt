@@ -1,0 +1,8 @@
+Level 2 - Documented.
+Structure: tiny native ES-module repository with UI/domain separation and one Adapter. README and module map reflect delivered source.
+Reproducibility: no third-party packages; package and lock unchanged. npm ci --ignore-scripts --offline passed, followed by test/check/build. Runtime Node v25.9.0 and npm11.12.1 recorded; cross-version/OS matrix not executed.
+Tests: original 14/14; new suite before repair 25/31; final31/31. Browser12/12. Syntax check and build pass. No linter, static type checker or CI is configured, so none is described as passed. Adapter additionally checked with node --check.
+Logging: command logs, exit records, browser results and hashes retained. Runtime server logging is absent because there is no server; production diagnosis is not claimed.
+Security: fictional input, no secrets/backend/network dependency; textContent fix. No comprehensive secret scanner, runtime advisory scan, pentest or full accessibility audit executed.
+AGENTS: root file gives architecture, safe setup/commands, edit scope, forbidden operations and human review gate. Read explicitly from disk, no automatic loading claim.
+Missing Level3 evidence: automated CI enforcement, independent human review, broader environment verification and stronger domain calendar validation. Instructions do not enforce OS permissions.
